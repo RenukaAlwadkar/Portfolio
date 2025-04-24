@@ -3,62 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
+    <title>Responsive Timeline</title>
+    <style>
         /* Experience Section */
         .section {
-            padding: 5rem 5%;
+            padding: 3rem 1rem;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: #2d3436;
         }
         
         .section-title p {
             color: #636e72;
             max-width: 600px;
             margin: 0 auto;
+            font-size: 1rem;
         }
 
         .timeline {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
         
         .timeline::after {
             content: '';
             position: absolute;
-            width: 6px;
+            width: 4px;
             background-color: #ff7a3d80;
             top: 0;
             bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+            left: 31px;
             border-radius: 10px;
         }
         
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 0 10px 70px;
             position: relative;
-            width: 50%;
+            width: 100%;
             box-sizing: border-box;
+            margin-bottom: 1.5rem;
         }
         
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -12px;
+            width: 20px;
+            height: 20px;
+            left: 22px;
             background-color: white;
             border: 4px solid #ff7a3d80;
             top: 15px;
@@ -66,41 +67,30 @@
             z-index: 1;
         }
         
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .right::after {
-            left: -12px;
-        }
-        
         .timeline-content {
-            padding: 20px 30px;
+            padding: 15px 20px;
             background-color: white;
             position: relative;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .timeline-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: #6c5ce7;
         }
         
         .timeline-content h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
             color: #fd79a8;
         }
         
         .timeline-content p {
             color: #636e72;
             line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         .timeline-date {
@@ -111,42 +101,139 @@
             padding: 0.3rem 0.8rem;
             background-color: #f5f6fa;
             border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-</style>
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .section {
+                padding: 4rem 5%;
+            }
+            
+            .timeline::after {
+                left: 50%;
+                margin-left: -2px;
+            }
+            
+            .timeline-item {
+                padding: 10px 40px;
+                width: 50%;
+            }
+            
+            .timeline-item::after {
+                width: 25px;
+                height: 25px;
+                right: -12px;
+                left: auto;
+            }
+            
+            .left {
+                left: 0;
+            }
+            
+            .right {
+                left: 50%;
+            }
+            
+            .right::after {
+                left: -12px;
+            }
+            
+            .timeline-content {
+                padding: 20px 30px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .timeline-content h4 {
+                font-size: 1rem;
+            }
+            
+            .timeline-content p {
+                font-size: 1rem;
+            }
+            
+            .timeline-date {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .section {
+                padding: 5rem 5%;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
 <body>
-        <!-- Experience Section -->
-        <section class="section" id="experience">
-            <div class="section-title">
-                <h2>My Work Experience</h2>
-                <p>Here's a timeline of my professional journey in the design industry</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item left fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2016 - July 2020</span>
-                        <h3>Experience Designer</h3>
-                        <h4>Cognizant, Mumbai</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
-                    </div>
-                </div>
-                <div class="timeline-item right fade-in" style="animation-delay: 0.2s;">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2020 - July 2023</span>
-                        <h3>UI/UX Designer</h3>
-                        <h4>Sugee Pvt limited, Mumbai</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
-                    </div>
-                </div>
-                <div class="timeline-item left fade-in" style="animation-delay: 0.4s;">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sep 2023 - Present</span>
-                        <h3>Lead UX Designer</h3>
-                        <h4>Cinetstox, Mumbai</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
-                    </div>
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="section-title">
+            <h2>My Work Experience</h2>
+            <p>Here's a timeline of my professional journey in the design industry</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left fade-in">
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2016 - July 2020</span>
+                    <h3>Experience Designer</h3>
+                    <h4>Cognizant, Mumbai</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
                 </div>
             </div>
-        </section>
+            <div class="timeline-item right fade-in" style="animation-delay: 0.2s;">
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2020 - July 2023</span>
+                    <h3>UI/UX Designer</h3>
+                    <h4>Sugee Pvt limited, Mumbai</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
+                </div>
+            </div>
+            <div class="timeline-item left fade-in" style="animation-delay: 0.4s;">
+                <div class="timeline-content">
+                    <span class="timeline-date">Sep 2023 - Present</span>
+                    <h3>Lead UX Designer</h3>
+                    <h4>Cinetstox, Mumbai</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo vulputate, bibendum sodales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple intersection observer for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>

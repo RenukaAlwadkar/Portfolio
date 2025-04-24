@@ -3,44 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Projects</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Projects - JCREA Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #3498db;
-            --accent: #e74c3c;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+            --glass: rgba(255, 255, 255, 0.2);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
-        .section {
-            padding: 3rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            padding: 2rem;
         }
         
         .section-title {
-            text-align: center;
             margin-bottom: 2rem;
+            text-align: center;
         }
         
         .section-title h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
         .section-title p {
@@ -50,28 +46,33 @@
         }
         
         /* Projects Section */
+        .projects {
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
         
         .project-card {
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
             position: relative;
-            background: white;
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
         
         .project-image {
-            height: 200px;
+            height: 250px;
             overflow: hidden;
         }
         
@@ -79,27 +80,26 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
         
         .project-card:hover .project-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .project-info {
-            padding: 1.2rem;
+            padding: 1.5rem;
+            background-color: white;
         }
         
         .project-info h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--dark);
         }
         
         .project-info p {
             color: #636e72;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
         }
         
         .project-tags {
@@ -113,7 +113,7 @@
             padding: 0.3rem 0.8rem;
             background-color: var(--light);
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--dark);
         }
         
@@ -123,14 +123,12 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
         
         .project-link i {
             margin-left: 0.5rem;
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
         
         .project-link:hover {
@@ -138,96 +136,76 @@
         }
         
         .project-link:hover i {
-            transform: translateX(3px);
+            transform: translateX(5px);
         }
         
-        /* Animation */
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
             opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .section {
-                padding: 2rem 5%;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .project-image {
-                height: 180px;
-            }
-            
-            .project-info {
-                padding: 1rem;
-            }
-            
-            .project-info h3 {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .section {
-                padding: 1.5rem 5%;
-            }
-            
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            
-            .section-title p {
-                font-size: 0.9rem;
-            }
-            
             .projects-grid {
                 grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
             }
             
-            .project-image {
-                height: 160px;
-            }
-            
-            .project-info p {
-                font-size: 0.9rem;
-            }
-            
-            .project-tag {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .project-image {
-                height: 140px;
-            }
-            
-            .project-info h3 {
-                font-size: 1rem;
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Projects Section -->
-    <section class="section" id="projects">
+    <section class="projects section">
         <div class="section-title">
             <h2>My Projects</h2>
             <p>Here are some of my recent design projects</p>
@@ -292,22 +270,160 @@
         </div>
     </section>
 
+    <!-- Project Modals -->
+    <div class="modal" id="projectModal1">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Lirante - Food Delivery Solution</h2>
+            <div class="project-image" style="height: 400px; margin: 1rem 0;">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Project 1" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-info">
+                <div class="project-tags">
+                    <span class="project-tag">UI Design</span>
+                    <span class="project-tag">Mobile App</span>
+                    <span class="project-tag">Food Delivery</span>
+                </div>
+                <p>Lirante is a comprehensive food delivery solution designed to connect restaurants with customers through an intuitive mobile interface. The project involved:</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>User research and persona development</li>
+                    <li>Wireframing and prototyping</li>
+                    <li>UI design with a focus on food imagery</li>
+                    <li>Checkout process optimization</li>
+                    <li>Delivery tracking system</li>
+                </ul>
+                <p>The app achieved a 4.9/5 average rating on app stores and increased order volume by 35% for partner restaurants.</p>
+                <a href="#" class="project-link">View Live Project <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="projectModal2">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>JX Design System</h2>
+            <div class="project-image" style="height: 400px; margin: 1rem 0;">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 2" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-info">
+                <div class="project-tags">
+                    <span class="project-tag">Design System</span>
+                    <span class="project-tag">UI Components</span>
+                    <span class="project-tag">Figma</span>
+                </div>
+                <p>The JX Design System was created to provide a consistent design language across all company products. Key features include:</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Comprehensive color palette with accessibility checks</li>
+                    <li>Typography scale for multiple device sizes</li>
+                    <li>Reusable component library</li>
+                    <li>Design tokens for development handoff</li>
+                    <li>Documentation for designers and developers</li>
+                </ul>
+                <p>The system reduced design time by 40% and improved consistency across all digital products.</p>
+                <a href="#" class="project-link">View Design System <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="projectModal3">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cinetrade Platform</h2>
+            <div class="project-image" style="height: 400px; margin: 1rem 0;">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Project 3" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-info">
+                <div class="project-tags">
+                    <span class="project-tag">Web App</span>
+                    <span class="project-tag">Dashboard</span>
+                    <span class="project-tag">Finance</span>
+                </div>
+                <p>Cinetrade is an innovative platform for investing in digital media assets. The project involved:</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Complex data visualization for investment tracking</li>
+                    <li>Secure authentication flows</li>
+                    <li>Portfolio management interface</li>
+                    <li>Real-time market data display</li>
+                    <li>Responsive design for desktop and mobile</li>
+                </ul>
+                <p>The platform successfully onboarded over 10,000 users in its first 3 months with a 95% satisfaction rate.</p>
+                <a href="#" class="project-link">Visit Platform <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="projectModal4">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Sugee Loan Management</h2>
+            <div class="project-image" style="height: 400px; margin: 1rem 0;">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 4" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="project-info">
+                <div class="project-tags">
+                    <span class="project-tag">Web Design</span>
+                    <span class="project-tag">Finance</span>
+                    <span class="project-tag">Rural Sector</span>
+                </div>
+                <p>Sugee is a loan management system designed specifically for the rural sector, featuring:</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Simplified application process for non-tech users</li>
+                    <li>Multilingual support</li>
+                    <li>Offline functionality for areas with poor connectivity</li>
+                    <li>Visual loan repayment tracking</li>
+                    <li>Accessibility features for low-literacy users</li>
+                </ul>
+                <p>The system has helped disburse over $5M in loans to rural entrepreneurs with a 98% repayment rate.</p>
+                <a href="#" class="project-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Simple intersection observer for animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectCards = document.querySelectorAll('.project-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            projectCards.forEach(card => {
-                observer.observe(card);
+        // Animate elements when page loads
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnLoad = () => {
+            fadeElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
             });
+        };
+        
+        window.addEventListener('load', fadeInOnLoad);
+        
+        // Project Modals
+        const projectLinks = document.querySelectorAll('.project-view');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        
+        projectLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = link.getAttribute('data-project');
+                document.getElementById(`projectModal${projectId}`).style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
