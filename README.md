@@ -1,8 +1,8 @@
 # 🚀 NeoFolio – Interactive 3D Portfolio
 
 ## 👥 Team Information
-**Team Name:** NeoFolio Creators
-# **Members:**
+**Team Name:** NeoFolio Creators 
+**Members:**
 - Rishikesh Sawarkar – Frontend Development, Animations
 - Rushi Borkar – Backend Development, AI Chatbot Integration
 - Renuka Alwadkar – UI/UX Design, Content Strategy
