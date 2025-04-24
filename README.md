@@ -2,7 +2,7 @@
 
 ## 👥 Team Information
 **Team Name:** NeoFolio Creators
-**Members:**
+# **Members:**
 - Rishikesh Sawarkar – Frontend Development, Animations
 - Rushi Borkar – Backend Development, AI Chatbot Integration
 - Renuka Alwadkar – UI/UX Design, Content Strategy
